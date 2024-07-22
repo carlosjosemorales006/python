@@ -1,6 +1,5 @@
 
+valor1 = True
+valor2 = not True
 
-numero1 = 10
-numero2 = 10
-
-if numero1 == 10 and numero 
+print(valor2)
