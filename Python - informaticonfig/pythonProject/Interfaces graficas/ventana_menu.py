@@ -1,6 +1,7 @@
 import sys
 from tkinter import *
-from tkinter import messagebox
+from tkinter import messagebox, filedialog
+from tkinter.filedialog import asksaveasfile
 
 ventana = Tk()
 ventana.geometry('500x500+500+130')
@@ -8,8 +9,14 @@ ventana.geometry('500x500+500+130')
 def acercade():
     messagebox.showinfo('MI SOFTWARE','Sistema de procesos informaticos')
 
+def abrir():
+    filedialog.askopenfile(initialfile='',filetypes=(('Ficheros Excel','*.xlsx'),
+                            ('Ficheros de texto','*.txt'   ),('Todos los archivos','*.*')))
+def guardar():
+    f = asksaveasfile(mode='w',defaultextension='.txt')
+    f.close()
 def actualiza():
-    messagebox.showwarning('Actualzacion','''Actaualizacion disponible
+    messagebox.showwarning('Actualzacion','''Actualizacion disponible
     debe actualizar el sistema
     visite: www.misistema.com''')
 
@@ -30,8 +37,8 @@ ventana.config(menu = barramenu, width=600, height=400)
 
 menuarchivo = Menu(barramenu, tearoff=0)
 menuarchivo.add_command(label='Nuevo')
-menuarchivo.add_command(label='Abrir')
-menuarchivo.add_command(label='Guardar')
+menuarchivo.add_command(label='Abrir',command=abrir)
+menuarchivo.add_command(label='Guardar', command=guardar)
 menuarchivo.add_command(label='Guardar como..')
 menuarchivo.add_separator()
 menuarchivo.add_command(label='Cerrar',command=cierradoc)
